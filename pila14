@@ -1,0 +1,32 @@
+package pila14;
+
+import java.util.concurrent.ThreadLocalRandom;
+
+public class Pila14 {
+
+
+    public static void main(String[] args) {
+        int longitud;
+        longitud = 0b11010;
+        String cadena = cadenaAleatoria(longitud);
+        System.out.printf("/*/*Cadena aleatoria de %d caracteres*/*/: %s\n", longitud, cadena);
+    }
+
+    public static String cadenaAleatoria(int longitud) {
+        // El banco de caracteres
+        String banco = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+        // La cadena en donde iremos agregando un carácter aleatorio
+        String cadena = "";
+        for (int x = 0; x < longitud; x++) {
+            int indiceAleatorio = numeroAleatorioEnRango(0, banco.length() - 1);
+            char caracterAleatorio = banco.charAt(indiceAleatorio);
+            cadena += caracterAleatorio;
+        }
+        return cadena;
+    }
+
+    public static int numeroAleatorioEnRango(int minimo, int maximo) {
+   
+        return ThreadLocalRandom.current().nextInt(minimo, maximo + 1);
+    }
+}
